@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creative Profile Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #f0f0f5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container {
+      background: #212121dd;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+      overflow: hidden;
+      padding: 40px 50px;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #ffffffcc;
+      margin-bottom: 20px;
+      letter-spacing: 1.2px;
+    }
+    h1 {
+      font-size: 3.2rem;
+      text-align: center;
+      user-select: none;
+    }
+    h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #764ba2;
+      padding-bottom: 8px;
+      margin-top: 40px;
+    }
+    p, li {
+      font-weight: 300;
+      line-height: 1.6;
+      color: #d9d9e0cc;
+      user-select: none;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 12px;
+    }
+    .cover {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .cover img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid #764ba2;
+      box-shadow: 0 0 25px #8e79deab;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+    .cover img:hover {
+      transform: scale(1.1) rotate(3deg);
+    }
+    .cover h1 {
+      margin-top: 18px;
+      color: #fff;
+      text-shadow: 0 2px 6px #4b3f7e;
+    }
+    .tagline {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #bdbdff;
+      margin-top: 6px;
+      user-select: none;
+    }
+
+    /* About Me */
+    #about p {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Skills */
+    .skill {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      user-select: none;
+    }
+    .skill .icon {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #764ba2, #667eea);
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px #483770aa;
+      width: 50px;
+      height: 50px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color: white;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .skill .icon:hover {
+      transform: scale(1.2);
+    }
+    .skill .name {
+      flex: 1;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #eee;
+    }
+    .progress-bar {
+      width: 160px;
+      height: 16px;
+      background: #363636;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 0 6px #000000aa;
+      flex-shrink: 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #764ba2, #667eea);
+      border-radius: 12px 0 0 12px;
+      transition: width 0.75s ease;
+      box-shadow: 0 2px 7px #8e79deaa;
+    }
+
+    /* Tools */
+    .tools-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+      user-select: none;
+    }
+    .tool {
+      width: 90px;
+      height: 90px;
+      background: #322f3d;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 25px #483770aa;
+      cursor: default;
+      transition: all 0.3s ease;
+    }
+    .tool:hover {
+      transform: scale(1.15) rotate(8deg);
+      box-shadow: 0 12px 35px #8369e9cc;
+    }
+    .tool img, .tool span {
+      max-width: 55px;
+      max-height: 55px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.4));
+      pointer-events:none;
+      user-select:none;
+    }
+
+    /* Sample Works */
+    #sample-works ul {
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 12px;
+    }
+
+    /* Services */
+    #services ul {
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 12px;
+    }
+
+    /* Education */
+    #education p {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-top: 12px;
+      color: #ccc;
+      user-select:none;
+    }
+
+    /* Contact */
+    #contact {
+      text-align: center;
+      margin-top: 40px;
+      user-select:none;
+    }
+    #contact a {
+      color: #bdbdff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    #contact a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Cover Page -->
+    <section class="cover" aria-label="Profile cover photo and name">
+      <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t39.30808-6/481774277_2082847802188118_8796769527149047086_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeE2UWcevJ52fQwiIwEckAp1bXw4cnp2xZBtfDhyenbFkC5Z3UKVhdCikb5BEeDmtyL7L3KyAbbmhGp_ZqQa9nx_&_nc_ohc=Y0WugVbwZCkQ7kNvwHfSM5f&_nc_oc=Adm85z1sloPVvK6Ak_rJLNcSus7Qttq62rmpD9TNCwh_XXuxPaiOXIF0dBAOWI1uV70&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&_nc_gid=HgsV_JqzD3UhEke09WKZKQ&oh=00_AfIwlJptu2-6ndvLKHgakGhkopebqdS1i31I-lbFjGj3vQ&oe=683F8035" alt="Profile Photo" />
+      <h1>Aldrex M. Udtohan</h1>
+      <p class="tagline">“Aspiring Virtual Assistant | IT Student”</p>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm an IT student passionate about tech, organization, and helping businesses grow. While I have no formal VA experience, I bring skills in web creation, document handling, and light video editing.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill">
+        <div class="icon" aria-label="HTML Website Creation">🌐</div>
+        <div class="name">HTML Website Creation</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Microsoft Office">🖥️</div>
+        <div class="name">Microsoft Word, Excel, PowerPoint</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Google Docs and Sheets">📄</div>
+        <div class="name">Google Docs/Sheets</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Video Editing">🎬</div>
+        <div class="name">Light Video Editing (CapCut, Canva)</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 65%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Admin Tasks">📋</div>
+        <div class="name">Basic Admin Tasks</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Time Management">⏰</div>
+        <div class="name">Time Management</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="icon" aria-label="Communication">💬</div>
+        <div class="name">Communication</div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" style="width: 90%;"></div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Tools I Use -->
+<section id="tools">
+  <h2>Tools I Use</h2>
+  <div class="tools-list" aria-label="Tools logos or icons">
+    <div class="tool" title="HTML / CSS">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Logo" width="40" height="40">
+      </a>
+    </div>
+    <div class="tool" title="Canva">
+      <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAWlBMVEUCwswIuc4NrdEZo9QjldcyiNhOuNmt3ev////u9fyH1OLY5Phryt02eN9FcNwCmNRQYeBeTuMlhd5qO+grU+WAi+w8Zeh6Kumvs/RHM+5KTPFzJ/BZNvdkJ/qcqMW7AAABD0lEQVR4AXXPBRLDMAxEUVMTOcyc+1+zK6kMv4N9s3JrvrLIOe99uHybYYQG4N9l+LN0fzCB3YfvmBKKmfuBGVFe2IIog3lY+WYZP5hRvA2rh2GRsvG0FisrY/kDxGP6J1LKaxiGQDHLR0GIKNGjglIkEvI+T2oQjlbNHXGVCd1uwhrjrMM5/jlCAckO1honZcBapGMSU/SuFmRCpVrbtsZzdcEoIqTWM/IzRPFOQz6q9YZv4VokAkzlNA0jDWLzbDptIcqHCcFGmSmWPBkitBmGZqFlhYGAQlxOeDcSTGaCk7Rt2zrmkeLSrqB9VhRBUO44QPusahQODXTuSE3wDudx7mr3pX6tvRtQ4R3vegWNXiIGxpIzCAAAAABJRU5ErkJggg==" alt="Canva Logo" width="40" height="40">
+      </a>
+    </div>
+    <div class="tool" title="Microsoft Office">
+      <a href="https://www.office.com/" target="_blank" rel="noopener noreferrer">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAMAAAC6CgRnAAAAilBMVEUAAAD+uQDzUCIApfF8uQEApPH+uQF9uQF8uQAApPDyUCL/2AAAwv/zTyQAo/F5uQD/XiQCfLcAwP9ljgCT2gC9jgC1OxW7PBX/XyNnkwF6tQLtTyP/Xir/bCfUSBR4pAGz/gCW1wCDMghRZQBkigADfLECebcCjNEEWYV6XQLJlQC8kAEA3f//7ABff57uAAADMmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1sbnM6SXB0YzR4bXBFeHQ9Imh0dHA6Ly9pcHRjLm9yZy9zdGQvSXB0YzR4bXBFeHQvMjAwOC0wMi0yOS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgZXhpZjpEYXRlVGltZU9yaWdpbmFsPSIyMDI1LTA1LTI4VDA5OjQwOjM1KzAwOjAwIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlRmlsZVR5cGU9Imh0dHA6Ly9jdi5pcHRjLm9yZy9uZXdzY29kZXMvZGlnaXRhbHNvdXJjZXR5cGUvY29tcG9zaXRlV2l0aFRyYWluZWRBbGdvcml0aG1pY01lZGlhIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlVHlwZT0iaHR0cDovL2N2LmlwdGMub3JnL25ld3Njb2Rlcy9kaWdpdGFsc291cmNldHlwZS9jb21wb3NpdGVXaXRoVHJhaW5lZEFsZ29yaXRobWljTWVkaWEiIHBob3Rvc2hvcDpDcmVkaXQ9IkVkaXRlZCB3aXRoIEdvb2dsZSBBSSIgcGhvdG9zaG9wOkRhdGVDcmVhdGVkPSIyMDI1LTA1LTI4VDA5OjQwOjM1KzAwOjAwIi8+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgPD94cGFja2V0IGVuZD0idyI/PulEv2UAAAEnSURBVCiRfZCLUsIwEEU3aUqbQELpA+Qh+EIU9f9/z7tLktbR8ZRuZ3Lm7m6gvbvhvW/W1PVLxshL3jutNb83Z+rK1LXBpyKPjBZcs4GrcBiB005i7i+XclqcqdATXbmnlk2mPTGtRq2M5Ni57AzgGHrGLVHvpCfvaNCZc9q70W17Nhwy4nRMcs9tv0PHiu8Il/4X5/Yyb5dZ0qE5NPxDuT/S6eGxz9Amsd4cn+j59NJtuwj9xxmshNfLG71fB+YDzzDQItN+Xuj6NR+hYEtrbUAJ7YqG+WyEQlECKe05OaVmeChAiCmnOaWiC4jBZ6dYATjLSdiQe0aJXazEisIuJvNSDsf2h1PJcUvJFb8dbynzyrxncjizTFGkPVW8niKZJPMm97vJb0ocHBwrD559AAAAAElFTkSuQmCC" alt="Microsoft Office Logo" width="40" height="40">
+      </a>
+    </div>
+    <div class="tool" title="Google Workspace"
+      <a href="https://workspace.google.com/" target="_blank" rel="noopener noreferrer">
+        <img src="data:image/webp;base64,UklGRlYDAABXRUJQVlA4WAoAAAAQAAAAGgAAGgAAQUxQSCgBAAARkF7btrE9d9+3hi9GXzYasa0KnGKcGj4jTp61fpz7vjVExAQkaXXXhTdfvk/fP72/tDsLtpZ26PmOIAo/nh5Oa0laa62fXgdEsK6d6hn1u4B1jtyYDfodpaqgINzoaS2nJ8VKQYHpRJJD61JQASu6sj95oag4Qik+zN7vLogjVHd2XUAFES1VxTOvUUQAK1r05TcpIHWE6MfvilqkOn/jr6gAiloo/Pnhgjgf1e/fFEDFITL6/BbAMeJw8PoCoAKIUlDl/O4dkLkC83aW2lMUQVRw3sPk0BqCWAEEdOVAS05MVFmI6Vha0q8DgiJW8GpvrSf9xgQ6AJTpck/Sk/QTq4BDhOUjPUlmSUsOPv2OFNl+vD9J75n1nrp05uWnzV8bH16e39UzAlZQOCAIAgAAsAoAnQEqGwAbAD6RKKRSJaGlpZQAsBIJbACdM2iBeLjIA0AGhAdQBvGP7a+jBc1ZEDVXzX7/oeVPUG/U//gdeD0KA+B3qnm8ZCQDzIVeBaW3KYoWXDN30rnF1g74YAD+/AHPvktBAn39azzmBIJ7VDB3X6Ybni62dBoWU6LdaaCuNI++CdLATiTy2IKqS0feNzvqGcE1mGqeWwdLXoZBVNMD4QrUdQzfibJnozRMy0CeacDbe7VeFEXitHbCT8nDjjnVoE5YIwUr12vexRNPyEuUfvu65RW0b63iu/c2xkvZ4dAizYtG5gz3/7pulL8RwRRSny3fc3wZGJ8/2wtQTez2i/m5pdmOVxNFJe5e5hVQ2tdk6EHIgH/Aya/+DX/9isGZVz/p+c5mtuhdeIkvaH5BxT++Ph/zT++wBG+bsTzffZRtP/v+ZYYiqIZ3Mc2tY94DRWzLiWzHPMZYcejlNEup3C41grKW/abyvNQRKeMmArws0ftIaMOkLazMm9sdPCz4l6aVrfyYFaDQ+wr6T6mdEoc7993JVFuIMgubsKR+s3OxAnxoQa13IHz1f/rz0nsj5rc1Jfj+/+M/t8Mf4EwAGflXD9ayBe9ltRY1Mo9fUeyqnmmFAuZPW/ttV1QI26MRP7U68sdUxXYUD1dbctIf9/v2YDbX8ZW5yNUvPgWPH2K6gAAAAA==" alt="Google Workspace Logo" width="40" height="40">
+      </a>
+    </div>
+    <div class="tool" title="CapCut Video Editor">
+      <a href="https://www.capcut.com/" target="_blank" rel="noopener noreferrer">
+        <img src="data:image/webp;base64,UklGRsoDAABXRUJQVlA4WAoAAAAQAAAAJgAAJgAAQUxQSIsBAAARoFzbtmpbOc8+kI27uzsk5pqJQ8klDne97/RR2Puc90KIiAlYlmU5e+qtz38nKFU0/vX1O49edXy0HB0tyy2fHTQ3TkrTw8c3HS3L8dFLP7G1UwbRT88vy/FNP0WFQRln8x+vX675WA1zqobdPjx7+H9dIm0rDg+8qjkmtBNNX/+iyq4LiuG7P4aC5igFmfab0ohZmmqqcqhSab9SSdN1qJTsKDJeQGkXGRtlZWgQZZ7EhFU75nRBVSo7lIGigrC2W6Xdmu5QGiHzKpUtTXTZWyNVbLABDSikNEU7N1Kab4z2TBtVdtg7dN5cpWQrmpONVJAYzGQ6mO2lbRISRGWjucFQTcYtVUqlmKDQppl2DihSykT26Pyv0iVjx+/fFckM2S6F+ub1KltSRKVK48sP/0+lRFNjFMH/d171USHTQTUkqnjv5Pi671P2JJRM+PHa5ejoyZ8oFGQ7Cj89d7QsR8t1n54bkItWhw+uW8aj5fTRd7/77bCu62odz63ryroefv76tftOlmVZAABWUDggGAIAADAMAJ0BKicAJwA+kS6kUiWhpaWRwLASCWkA0vBB3+gdS/kfT1D5hmYPyIyXn9ZnAH/A8mv47/XP+d7gf8p/oP+z683oT/toeY2W878ML8Op8Ni9WeZtATINACjecmgnRoRy93vVbxkHGLAA8f5sTzX4Nf8Nf8jKAxT+fFb+/k5Zzg/ned9fnOns9YSkjVKIuVoUXA/JyXkKb8n+zDhv5Rz9KHY//Tet2wRdIhxdeHYfnDm4DhJWki9Sf6yr2/VFDnF43Dzz6tGdstEOk0ZajUhzIU0mVD8DT5Dv8c3wY20gem29/1LJ430SwGs6k/5iX9CN+9Jf/+Fawvmx6BGYTdF3T+iYqZa1WtA0hAmrCeLJ5YF8m4kDzhB+fmnlRKlGiy69sy7ielwIovqjRr8S+57BdruH9P8Xp8egZoLgf3hhT2fIz21FcYsM4YXumIyCTcv/+62MviZa2hkKTvQMsJOTGaEI9qGbC/HRqhdSOTxhGb8C0pksccKX1jxe9yg6piLr7PoeyJn7fnLaWYoP+LA8dQkitmc3GMASieD/i8ed7O4S6Jrw5VNZiuzqpo3fzbrjhxxmc2f6bm+OedX/skE62Ha//V/NRdLIdZ6nfuXD5CQ1T9G+0asTJ28EfhyZ5Bp9qPzKdnu6JzAiEctDtkxMQv2um/IvxJRF/RwiSWWMtj82B6fkbg2ixwnr/JJ9iR1ygHVVE8gA" alt="CapCut Logo" width="40" height="40">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Services -->
+    <section id="services">
+      <h2>Services I Can Offer</h2>
+      <ul>
+        <li>Data Entry</li>
+        <li>Email Management</li>
+        <li>File Organization</li>
+        <li>Web Research</li>
+        <li>Document Formatting</li>
+        <li>Light Editing &amp; Design</li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <p>BS in Information Technology (2nd Year Student)</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="Contact">
+      <h2>Contact or Search</h2>
+    </section>
+<div class="contact-links" style="text-align: center; margin-top: 30px; line-height: 2;">
+  <p>Gmail: <a href="mailto:aldrexudtohan12@gmail.com" style="color: inherit; text-decoration: underline;">aldrexudtohan12@gmail.com</a></p>
+  <p>Messenger: <a href="https://www.messenger.com/aldrexu09" target="_blank" style="color: inherit; text-decoration: underline;">messenger.com/aldrexu09</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/aldrexu09" target="_blank" style="color: inherit; text-decoration: underline;">instagram.com/aldrexu09</a></p>
+  <p>Telegram: <a href="https://t.me/+639670021589" target="_blank" style="color: inherit; text-decoration: underline;">t.me/Aldrex Udtohan</a></p>
+  <p>WhatsApp: <a href="https://wa.me/+639670021589" target="_blank" style="color: inherit; text-decoration: underline;">wa.me/Aldrex Udtohan</a></p>
+</div>
+
+
+</div>
+
+    </section>
+
+  </div>
+</body>
+</html>
+
